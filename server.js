@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const opener = require('opener');
-const config = require('./webpack.config');
+const config = require('./webpack.config.dev');
 const host = 'localhost';
 const port = 3000;
 
