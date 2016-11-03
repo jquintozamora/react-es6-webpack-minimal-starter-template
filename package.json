@@ -1,0 +1,37 @@
+{
+  "name": "reporting",
+  "version": "1.0.0",
+  "private": true,
+  "license": "ISC",
+  "scripts": {
+    "start": "set NODE_ENV=development && node server.js"
+  },
+  "devDependencies": {
+    // Core library for Babel (ES6 transpiler to convert ES6 -> JavaScript supported by real browsers)
+    // Since browsers aren’t quite ready to handle ES6 out of the box yet, Babel bridges that gap for us.
+    "babel-core": "^6.3.15",                  
+    // Babel Loader - to integrate Babel in the WebPack flow. 
+    // More info: https://webpack.github.io/docs/usage.html#using-loaders
+    "babel-loader": "^6.2.0",
+    // A popular convention for React / Redux apps is to use es2015 and react presets for the babel-loader.
+    // These two will be configured on .babelrc file.  
+    // More Info: https://babeljs.io/docs/plugins/#presets
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.16.0",
+    // Open Browser when DevServer is started
+    "opener": "^1.4.2",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "redux-devtools": "^3.0.1",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.2",
+    "redux-logger": "^2.4.0",
+    "webpack": "^1.13.3",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "dependencies": {
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2"
+  }
+}
