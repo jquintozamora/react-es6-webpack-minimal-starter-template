@@ -1,5 +1,6 @@
-const path = require('path');
-const webpack = require('webpack');
+let path = require('path');
+let webpack = require('webpack');
+
 
 console.log("Executing webpack.config.js...");
 
@@ -7,33 +8,33 @@ console.log("Executing webpack.config.js...");
 ////////////////////////////////////////////////
 // Define Path variables
 ////////////////////////////////////////////////
+const outputPath = path.join(__dirname, './../dist');
+const loadersInclude = path.resolve(__dirname, './../app/src');
 console.log("PATH VARIABLES:");
-var outputPath = path.join(__dirname, './dist');
-var loadersInclude = path.resolve(__dirname, './src');
 console.log("__dirname: " + __dirname);
 console.log("outputPath: " + outputPath);
 console.log("loadersInclude: " + loadersInclude);
 
-
 ////////////////////////////////////////////////
 // Define WebPack Config
 ////////////////////////////////////////////////
-var webpackConfig = {
+let webpackConfig = {
   // To enhance the debugging process. More info: https://webpack.js.org/configuration/devtool/
   devtool: 'cheap-eval-source-map', 
-  entry: [
+  entry: {
+    'app': [
         'react-hot-loader/patch',
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server', //doesn’t reload the browser upon syntax errors, 'webpack/hot/dev-server' does!
-        './src/index.js'
-  ],
+        './app/src/index.jsx'
+    ]
+  },
   output: {
     path: outputPath,
     filename: 'bundle.js',
     publicPath: '/static/'
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(), // recommended by webpack
     /**
      * This is where the magic happens! You need this to enable Hot Module Replacement!
      */
@@ -49,11 +50,16 @@ var webpackConfig = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         loaders: ['babel'], // 'babel-loader' is also a valid name to reference
         exclude: [/node_modules/, /styles/],
         include: loadersInclude
+      },
+      { 
+        test: /\.scss$/i,
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
       }
+        
     ]
   }
 };
