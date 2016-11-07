@@ -1,4 +1,4 @@
-# Beginners Starter Template for React, ES6, SCSS, Webpack and Live Reloading
+# Simple Starter Template for React, ES6, SCSS, Webpack and Live Reloading (React Hot Loader 3)
 The motivation for doing other starter template for single page applications (SPA) 
 is because as a beginner it took to me hours and hours of googling and looking into different templates
 to have some starting point for my SPA application.   
@@ -13,11 +13,13 @@ Let's try!
 - React 
 - ES6 (with babel)
 - SCSS
+- Hot Module Replacement (React Hot Loader 3)
 - Webpack
     - Webpack-dev-server
     - Webpack development environment configuration
     - Webpack Babel loader configuration
     - Webpack SCSS configuration
+    - Webpack configuration for HMR
 
 <br />
 
