@@ -51,8 +51,8 @@ Go to the project Github page (<https://github.com/jquintozamora/react-es6-webpa
 4. Clone your forked repo on your machine:
 ```
 $ git clone https://github.com/username/react-es6-webpack-minimal-starter-template
-```
-    ***Note**: That will create a new folder called react-es6-webpack-minimal-starter-template with all the files in.*
+```  
+***Note**: That will create a new folder called react-es6-webpack-minimal-starter-template with all the files in.*
 
 ### Install yarn
 We will use yarn as a client for NPM registry, because that will avoid some conflicts on dependencies between environments.  
