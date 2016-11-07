@@ -8,7 +8,7 @@ export default class Counter extends Component {
     let contInit = 10;
     this.state = {
         cont: contInit,
-        message: contInit + " taps left!"
+        message: contInit + " clicks left!"
     }
     this.minus = this.minus.bind(this);
   }
@@ -17,7 +17,7 @@ export default class Counter extends Component {
     if (this.state.cont > 1) {
         this.setState({
             cont: --this.state.cont,
-            message: this.state.cont + " taps left!"
+            message: this.state.cont + " clicks left!"
         });
     } else {
         this.setState({
@@ -31,7 +31,7 @@ export default class Counter extends Component {
     return (
         <div className="rc-counter"> 
             <div className="rc-counter-text" >{this.state.message}</div>
-            <Button text="Tap" 
+            <Button text="Click here!" 
                     onClick={this.minus} />
         </div>
     );
