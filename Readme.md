@@ -1,10 +1,9 @@
 # Simple Starter Template for React, ES6, SCSS, Webpack and Live Reloading (React Hot Loader 3)
-The motivation for doing other starter template for single page applications (SPA) 
-is because as a beginner it took to me hours and hours of googling and looking into different templates
+The reason for doing other React starter template for single page applications (SPA) 
+is because when I started to look into templates it took to me hours and hours of googling and testing different templates
 to have some starting point for my SPA application.   
 There are templates with hundreds of dependencies. Why not reduce to the minimal?  
-There are other templates which didn´t work when I did npm i, npm run start, …   
-In spite of the tons of Starter Templates, Starter Kits and Boilerplates 
+In addition, even if there are tons of Starter Templates, Starter Kits and Boilerplates 
 for React + ES6 + WebPack projects, it is hard to get working easily just typing npm i (or yarn), npm run start.   
 Let's try!
 
