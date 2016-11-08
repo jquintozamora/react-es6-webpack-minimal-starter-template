@@ -97,7 +97,7 @@ Coming soon...
 
 <br /><br />
 ## Contributing
-Please be free of add your own improvement. I am waiting your Pull Request (PR).
+Please feel free to add your own improvement. I am waiting your Pull Request (PR).
 
 ## License
 MIT License
