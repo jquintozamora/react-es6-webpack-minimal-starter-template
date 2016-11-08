@@ -40,7 +40,7 @@ Let's try!
 
 ### Fork
 Go to the project Github page (<https://github.com/jquintozamora/react-es6-webpack-minimal-starter-template>) and click Fork button.  
-***Note**: That will create a new fork of the project for you, which means you will have your own space on Github to play with the code.*
+*Note: That will create a new fork of the project for you, which means you will have your own space on Github to play with the code.*
 
 ### Clone Repo
 1. Get the url of your forked project.
@@ -52,7 +52,7 @@ Go to the project Github page (<https://github.com/jquintozamora/react-es6-webpa
 ```
 $ git clone https://github.com/username/react-es6-webpack-minimal-starter-template
 ```  
-***Note**: That will create a new folder called react-es6-webpack-minimal-starter-template with all the files in.*
+*Note: That will create a new folder called react-es6-webpack-minimal-starter-template with all the files in.*
 
 ### Install yarn
 We will use yarn as a client for NPM registry, because that will avoid some conflicts on dependencies between environments.  
@@ -64,7 +64,7 @@ $ npm i -g yarn
 
 ### Install Project dependencies
 As we have yarn, instead of using npm i to install all our dependencies in our node_modules folder, we will use just yarn.
-***Note*: you need to be sure your are inside the project folder because yarn will look for package.json file.*
+*Note: you need to be sure your are inside the project folder because yarn will look for package.json file.*
 
 ```
 $ cd react-es6-webpack-minimal-starter-template  
