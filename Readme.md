@@ -2,9 +2,7 @@
 The reason for doing other React starter template for single page applications (SPA) 
 is because when I started to look into templates it took to me hours and hours of googling and testing different templates
 to have some starting point for my SPA application.   
-There are templates with hundreds of dependencies. Why not reduce to the minimal?  
-In addition, even if there are tons of Starter Templates, Starter Kits and Boilerplates 
-for React + ES6 + WebPack projects, it is hard to get working easily just typing npm i (or yarn), npm run start.   
+There are templates with hundreds of dependencies. Why not reduce to the minimal needed to start playing with React?  
 Let's try!
 
 
