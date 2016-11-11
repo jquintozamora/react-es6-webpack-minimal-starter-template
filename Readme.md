@@ -21,8 +21,8 @@ Let's try!
 <br />
 
 ### Features NOT INCLUDED (TODOs)
-- React Router
-- Redux
+- [React Router](https://css-tricks.com/learning-react-router)
+- [Redux](https://css-tricks.com/learning-react-redux)
 - Testing environment
 - Linting (eslint)
 - Webpack production configuration
