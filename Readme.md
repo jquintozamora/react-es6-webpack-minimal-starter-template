@@ -23,9 +23,10 @@ Let's try!
 ### Features NOT INCLUDED (TODOs)
 - [React Router](https://css-tricks.com/learning-react-router)
 - [Redux](https://css-tricks.com/learning-react-redux)
-- Testing environment
-- Linting (eslint)
+- TDD. Configure Test Driven Development environment. Mocha, Chai, ...
+- Linting. Integrate with [eslint](http://eslint.org/docs/user-guide/configuring)
 - Webpack production configuration
+    - Add ExtractTextPluging, etc.
 
 
 
