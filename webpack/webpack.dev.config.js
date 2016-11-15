@@ -35,16 +35,18 @@ let webpackConfig = {
     publicPath: '/static/'
   },
   plugins: [
+    // See full list: https://github.com/webpack/docs/wiki/list-of-plugins
+
     /**
      * This is where the magic happens! You need this to enable Hot Module Replacement!
      */
     new webpack.HotModuleReplacementPlugin(),
     /**
-     * NoErrorsPlugin prevents your webpack CLI from exiting with an error code if
-     * there are errors during compiling - essentially, assets that include errors
-     * will not be emitted. If you want your webpack to 'fail', you need to check out
-     * the bail option.
-     */
+      * When there are errors while compiling this plugin skips the emitting phase (and recording phase), 
+      * so there are no assets emitted that include errors. The emitted flag in the stats is false for all assets. 
+      * If you are using the CLI, the webpack process will not exit with an error code by enabling this plugin. 
+      * If you want webpack to "fail" when using the CLI, please check out the bail option
+      */
     new webpack.NoErrorsPlugin()
   ],
   module: {
