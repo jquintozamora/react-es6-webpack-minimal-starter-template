@@ -1,26 +1,22 @@
 let path = require('path');
 let webpack = require('webpack');
 
-
-console.log("Executing webpack.config.js...");
-
-
 ////////////////////////////////////////////////
 // Define Path variables
 ////////////////////////////////////////////////
 const outputPath = path.join(__dirname, './../dist');
 const loadersInclude = path.resolve(__dirname, './../app/src');
-console.log("PATH VARIABLES:");
-console.log("__dirname: " + __dirname);
-console.log("outputPath: " + outputPath);
-console.log("loadersInclude: " + loadersInclude);
+//console.log("PATH VARIABLES:");
+//console.log("__dirname: " + __dirname);
+//console.log("outputPath: " + outputPath);
+//console.log("loadersInclude: " + loadersInclude);
 
 ////////////////////////////////////////////////
 // Define WebPack Config
 ////////////////////////////////////////////////
 let webpackConfig = {
   // To enhance the debugging process. More info: https://webpack.js.org/configuration/devtool/
-  devtool: 'cheap-eval-source-map', 
+  devtool: 'cheap-module-eval-source-map', 
   entry: {
     'app': [
         'react-hot-loader/patch',
@@ -67,7 +63,4 @@ let webpackConfig = {
 };
 
 //console.log(webpackConfig);
-console.log("Executed webpack.config.js...");
-console.log(" ");
-
 module.exports = webpackConfig;

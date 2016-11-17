@@ -10,8 +10,8 @@
   },
   "scripts": {
     "start": "set NODE_ENV=development && node server.js",
-    "dev": "set NODE_ENV=development && webpack -d --progress --config ./webpack/webpack.dev.config.js",
-    "build": "set NODE_ENV=production && webpack -p --config ./webpack/webpack.production.config.js"
+    "dev": "set NODE_ENV=development && webpack --config ./webpack/webpack.dev.config.js",
+    "build": "set NODE_ENV=production && webpack --config ./webpack/webpack.production.config.js"
   },
   "devDependencies": {
     "babel-core": "~6.3.15",

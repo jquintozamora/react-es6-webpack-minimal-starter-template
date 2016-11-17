@@ -1,6 +1,6 @@
 import { AppContainer } from 'react-hot-loader'; // required  
 import React from 'react';  
-import ReactDOM from 'react-dom';  
+import {render} from 'react-dom';  
 import App from './containers/App.jsx'; // App
 
 import css from './../stylesheets/main.scss';
@@ -16,7 +16,7 @@ if (module.hot) {
 }
 
 function renderWithHotReload(App) {
-  ReactDOM.render(
+  render (
     <AppContainer>
       <App />
     </AppContainer>,
