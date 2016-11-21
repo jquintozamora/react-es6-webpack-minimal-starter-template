@@ -2,19 +2,9 @@ const path = require('path');
 const webpack = require('webpack');
 
 ////////////////////////////////////////////////
-// Define Path variables
-////////////////////////////////////////////////
-//console.log("PATH VARIABLES:");
-let outputPath = path.join(__dirname, './../dist');
-let loadersInclude = path.resolve(__dirname, './../app/src');
-//console.log("__dirname: " + __dirname);
-//console.log("outputPath: " + outputPath);
-//console.log("loadersInclude: " + loadersInclude);
-
-////////////////////////////////////////////////
 // Define WebPack Config
 ////////////////////////////////////////////////
-let webpackConfig = {
+module.exports = {
   // To enhance the debugging process. More info: https://webpack.js.org/configuration/devtool/
   devtool: 'source-map',
   entry: {
@@ -23,7 +13,7 @@ let webpackConfig = {
     ]
   },
   output: {
-    path: outputPath,
+    path: path.join(__dirname, './../dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -33,25 +23,42 @@ let webpackConfig = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    // new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin({ minimize: true, sourceMap: true }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        screw_ie8: true,
+        conditionals: true,
+        unused: true,
+        comparisons: true,
+        sequences: true,
+        dead_code: true,
+        evaluate: true,
+        if_return: true,
+        join_vars: true,
+      },
+      minimize: true,
+      debug: false,
+      sourceMap: true,
+      output: {
+        comments: false
+      },
+
+    }),
     new webpack.optimize.AggressiveMergingPlugin()
   ],
   module: {
     loaders: [
       {
         test: /\.jsx$/,
-        loaders: ['babel'], // 'babel-loader' is also a valid name to reference
-        exclude: [/node_modules/, /styles/],
-        include: loadersInclude
+        loader: 'babel-loader',                           // User loader instead loader for compatiblity with next WebPack 2
+        include: path.resolve(__dirname, './../app/src')  // Use include instead exclude to improve build performance
       },
       {
         test: /\.scss$/i,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
+        include: path.resolve(__dirname, './../app/stylesheets')
       }
     ]
   }
 };
-
-//console.log(webpackConfig);
-module.exports = webpackConfig;
