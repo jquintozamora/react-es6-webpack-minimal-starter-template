@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 ////////////////////////////////////////////////
 // Define WebPack Config
@@ -23,6 +24,9 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
+    new ExtractTextPlugin('../dist/main.css',{
+        allChunks: true
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -45,6 +49,7 @@ module.exports = {
       },
 
     }),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin()
   ],
   module: {
@@ -54,10 +59,10 @@ module.exports = {
         loader: 'babel-loader',                           // User loader instead loader for compatiblity with next WebPack 2
         include: path.resolve(__dirname, './../app/src')  // Use include instead exclude to improve build performance
       },
-      {
+      { 
         test: /\.scss$/i,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
-        include: path.resolve(__dirname, './../app/stylesheets')
+        loader: ExtractTextPlugin.extract("style", "css!sass"),
+        include: path.resolve(__dirname, '../app/stylesheets'),
       }
     ]
   }
