@@ -17,9 +17,7 @@ if (module.hot) {
 
 function renderWithHotReload(App) {
   render (
-    <AppContainer>
       <App />
-    </AppContainer>,
-    document.getElementById('starter')
+    , document.getElementById('starter')
   );
 }

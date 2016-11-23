@@ -1,22 +1,30 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//  WebPack Development Config
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  author: Jose Quinto - https://blogs.josequinto.com
+//
+//  More webpack examples: https://github.com/webpack/webpack/tree/master/examples
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
 let path = require('path');
 let webpack = require('webpack');
 
-////////////////////////////////////////////////
-// Define Path variables
-////////////////////////////////////////////////
-const outputPath = path.join(__dirname, './../dist');
-const loadersInclude = path.resolve(__dirname, './../app/src');
-//console.log("PATH VARIABLES:");
-//console.log("__dirname: " + __dirname);
-//console.log("outputPath: " + outputPath);
-//console.log("loadersInclude: " + loadersInclude);
+module.exports = {
+  
+  // Best way to learn all webpack options: https://github.com/webpack/webpack/blob/v1.13.3/lib/WebpackOptionsApply.js
+  
+  // Use target = web to optimize the bundle for web sites
+  target: 'web',  
 
-////////////////////////////////////////////////
-// Define WebPack Config
-////////////////////////////////////////////////
-let webpackConfig = {
-  // To enhance the debugging process. More info: https://webpack.js.org/configuration/devtool/
-  devtool: 'cheap-module-eval-source-map', 
+  // Use devtool to enhance the debugging process. 
+  //    More info: https://webpack.js.org/configuration/devtool/ 
+  //               and https://webpack.github.io/docs/build-performance.html#sourcemaps
+  devtool: 'cheap-module-eval-source-map',    
+
+  defineDebug: true,
+  debug: true,
   entry: {
     'app': [
         'react-hot-loader/patch',
@@ -26,7 +34,7 @@ let webpackConfig = {
     ]
   },
   output: {
-    path: outputPath,
+    path: path.join(__dirname, './../dist'),
     filename: 'bundle.js',
     publicPath: '/static/'
   },
@@ -49,18 +57,15 @@ let webpackConfig = {
     loaders: [
       {
         test: /\.jsx$/,
-        loaders: ['babel'], // 'babel-loader' is also a valid name to reference
-        exclude: [/node_modules/, /styles/],
-        include: loadersInclude
+        loader: 'babel-loader',                                   // Use loader instead loaders to be compatible with the next version, webpack 2
+        include: path.resolve(__dirname, './../app/src')          // Use include instead exclude to improve the build performance
       },
       { 
         test: /\.scss$/i,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
+        include: path.resolve(__dirname, './../app/stylesheets')  // Use include instead exclude to improve the build performance
       }
         
     ]
   }
 };
-
-//console.log(webpackConfig);
-module.exports = webpackConfig;
