@@ -17,7 +17,14 @@ Let's try!
     - Webpack Babel loader configuration
     - Webpack SCSS configuration
     - [Webpack configuration for HMR](https://webpack.js.org/how-to/hot-module-reload)
-
+    - Webpack production configuration
+         - Split out css files (two threads, JS and CSS) using [ExtractTextPlugin](https://github.com/webpack/extract-text-webpack-plugin) 
+         - [UglifyJsPlugin with options](https://github.com/webpack/webpack/blob/v1.13.3/lib/optimize/UglifyJsPlugin.js)
+         - Use include in the loader instead of the exclude. [More info](http://stackoverflow.com/questions/37823764/how-include-and-exclude-works-in-webpack-loader)
+         - More perfomance tips: [here](https://medium.com/@khanght/optimize-webpack-production-build-ec594242b222#.bj3eyg65p)
+    - Webpack stats (bundle optimization helper)
+        - Generate stats.json file with profiler. Use (this tool)[http://webpack.github.io/analyse/] to analyze it.
+        - [webpack visualizer](https://chrisbateman.github.io/webpack-visualizer/)
 <br />
 
 ### Features NOT INCLUDED (TODOs)
@@ -26,8 +33,7 @@ Let's try!
 - [Server Side Rendering](https://medium.com/@firasd/quick-start-tutorial-universal-react-with-server-side-rendering-76fe5363d6e#.s8k4bz7ki)
 - TDD. Configure Test Driven Development environment. Mocha, Chai, ...
 - Linting. Integrate with [eslint](http://eslint.org/docs/user-guide/configuring)
-- [Webpack production configuration](https://medium.com/@khanght/optimize-webpack-production-build-ec594242b222#.bc2womdyv)
-    - Add ExtractTextPluging, etc.
+
 
 
 
@@ -36,10 +42,6 @@ Let's try!
 ### Install pre-requisites
 - Node.js and NPM: [Download and install](https://nodejs.org/). *I have version 6.6.0 of Node and 3.10.6 of NPM on Windows PC*
 - Git: [Download and install](https://git-scm.com/). *I have version 2.7.4 installed on Windows PC*
-
-### Fork
-Go to the project Github page (<https://github.com/jquintozamora/react-es6-webpack-minimal-starter-template>) and click Fork button.  
-*Note: That will create a new fork of the project for you, which means you will have your own space on Github to play with the code.*
 
 ### Clone Repo
 1. Get the url of your forked project.
