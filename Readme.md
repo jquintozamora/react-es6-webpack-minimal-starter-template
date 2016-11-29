@@ -31,9 +31,9 @@ Let's try!
 - [React Router](https://css-tricks.com/learning-react-router)
 - [Redux](https://css-tricks.com/learning-react-redux)
 - Replace SASS with [PostCSS](http://postcss.org/)
-- [Server Side Rendering](https://medium.com/@firasd/quick-start-tutorial-universal-react-with-server-side-rendering-76fe5363d6e#.s8k4bz7ki)
-- TDD. Configure Test Driven Development environment. Mocha, Chai, ...
+- Testing. Integrate with [Jest](https://facebook.github.io/jest/)
 - Linting. Integrate with [eslint](http://eslint.org/docs/user-guide/configuring)
+- [Server Side Rendering](https://medium.com/@firasd/quick-start-tutorial-universal-react-with-server-side-rendering-76fe5363d6e#.s8k4bz7ki)
 
 
 
