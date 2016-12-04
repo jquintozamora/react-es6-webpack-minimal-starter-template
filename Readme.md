@@ -9,7 +9,7 @@ Let's try!
 ## Features
 - [React](https://facebook.github.io/react) 
 - [ES6](http://es6-features.org) (with [babel](https://babeljs.io))
-- [SCSS](http://sass-lang.com)
+- [SCSS](http://sass-lang.com) using ITCSS and [BEM](http://getbem.com/introduction/) methodology. See this [sample](https://github.com/xfiveco/chisel-sample/tree/master/src/styles)
 - [Hot Module Replacement](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.xh6v0ht7j) ([React Hot Loader 3](https://github.com/gaearon/react-hot-loader/issues/243))
 - Webpack
     - [Webpack-dev-server](https://webpack.js.org/how-to/develop/#webpack-dev-server)
