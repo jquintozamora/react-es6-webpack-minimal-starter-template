@@ -10,10 +10,9 @@ export default class Counter extends Component {
         cont: contInit,
         message: contInit + " clicks left!"
     }
-    this.minus = this.minus.bind(this);
   }
 
-  minus() {
+  minus = () => {
     if (this.state.cont > 1) {
         this.setState({
             cont: --this.state.cont,
