@@ -1,22 +1,30 @@
-const path = require('path');
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//  WebPack 2 PROD Config
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  author: Jose Quinto - https://blogs.josequinto.com
+//
+//  WebPack 2 Migrating guide: https://webpack.js.org/guides/migrating/
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+const { resolve } = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-////////////////////////////////////////////////
-// Define WebPack Config
-////////////////////////////////////////////////
 module.exports = {
   // To enhance the debugging process. More info: https://webpack.js.org/configuration/devtool/
   devtool: 'source-map',
+  target: 'web',
   entry: {
-    'app': [
+    'bundle': [
       './app/src/index.jsx'
     ]
   },
+  context: resolve(__dirname, '../'),
   output: {
-    path: path.join(__dirname, './../dist'),
+    path: resolve(__dirname, './../dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -26,7 +34,8 @@ module.exports = {
       'DEBUG': false,                                 // Doesn´t have effect on my example
       '__DEVTOOLS__': false                           // Doesn´t have effect on my example
     }),
-    new ExtractTextPlugin('../dist/main.css', {
+    new ExtractTextPlugin({
+      filename: '../dist/main.css',
       allChunks: true
     }),
 
@@ -34,7 +43,6 @@ module.exports = {
     // Here you have all the available by now: 
     //    Webpack 1. https://github.com/webpack/webpack/blob/v1.13.3/lib/optimize
     //    Webpack 2. https://github.com/webpack/webpack/tree/master/lib/optimize
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -50,7 +58,7 @@ module.exports = {
         drop_console: true,
         drop_debugger: true,
         global_defs: {
-            __REACT_HOT_LOADER__: undefined // eslint-disable-line no-undefined
+          __REACT_HOT_LOADER__: undefined // eslint-disable-line no-undefined
         }
       },
       minimize: true,
@@ -61,20 +69,43 @@ module.exports = {
       },
 
     }),
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    // Included by default in webpack 2
+    // new webpack.optimize.OccurrenceOrderPlugin(), 
     new webpack.optimize.AggressiveMergingPlugin()
   ],
   module: {
-    loaders: [
+    // loaders -> rules in webpack 2
+    rules: [
       {
         test: /\.jsx$/,
         loader: 'babel-loader',                           // User loader instead loader for compatiblity with next WebPack 2
-        include: path.resolve(__dirname, './../app/src')  // Use include instead exclude to improve build performance
+        include: resolve(__dirname, './../app/src')  // Use include instead exclude to improve build performance
       },
       {
         test: /\.scss$/i,
-        loader: ExtractTextPlugin.extract("style", "css!sass"),
-        include: path.resolve(__dirname, '../app/stylesheets'),
+        include: resolve(__dirname, '../app/stylesheets'),
+        loader: ExtractTextPlugin.extract({
+          //fallback: 'style-loader',
+          fallbackLoader: 'style-loader',
+          //use: [
+          loader: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                importLoaders: 1,
+                minimize: true
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true,
+
+              },
+            }
+          ]
+        })
       }
     ]
   }

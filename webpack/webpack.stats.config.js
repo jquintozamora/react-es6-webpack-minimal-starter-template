@@ -1,9 +1,19 @@
 // REMEMBER UPLOAD YOUR stats.json to http://webpack.github.io/analyse/
 // IMPORTANT. If you use console.log in this file, the stats.json will not work...
 // TODO. Include fileDateTime in stats.json as well.
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//  WebPack 2 PROD Config
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//  author: Jose Quinto - https://blogs.josequinto.com
+//
+//  WebPack 2 Migrating guide: https://webpack.js.org/guides/migrating/
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////
 
-const path = require('path');
+const { resolve } = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 //WebPack visualizer: https://github.com/chrisbateman/webpack-visualizer
 var Visualizer = require('webpack-visualizer-plugin');
@@ -12,24 +22,28 @@ var Visualizer = require('webpack-visualizer-plugin');
 // File name for Visualizer
 ////////////////////////////////////////////////
 var currentDateTime = new Date();
-var currentDate = currentDateTime.toLocaleDateString('en-GB').replace(/\//g,"-");
-var currentTime = currentDateTime.toLocaleTimeString('en-GB', {hour12: false}).replace(/:/g,"-");
+var currentDate = currentDateTime.toLocaleDateString('en-GB').replace(/\//g, "-");
+var currentTime = currentDateTime.toLocaleTimeString('en-GB', { hour12: false }).replace(/:/g, "-");
 var fileDateTime = currentDate + "-" + currentTime;
-var statisticsFileName = '../webpack/stats/statistics-' + fileDateTime + '.html'; 
+var statisticsFileName = '../webpack/stats/statistics-' + fileDateTime + '.html';
 
 ////////////////////////////////////////////////
 // Define WebPack Config
 ////////////////////////////////////////////////
-module.exports  = {
+module.exports = {
   // To enhance the debugging process. More info: https://webpack.js.org/configuration/devtool/
-  devtool: 'source-map', 
-  entry: [
-        './app/src/index.jsx'
-  ],
+  devtool: 'source-map',
+  target: 'web',
+  entry: {
+    'bundle': [
+      './app/src/index.jsx'
+    ]
+  },
+  context: resolve(__dirname, '../'),
   output: {
-    path: path.join(__dirname, '../dist'),
+    path: resolve(__dirname, './../dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -51,7 +65,7 @@ module.exports  = {
       {
         test: /\.jsx$/,
         loader: 'babel-loader',
-        include: path.resolve(__dirname, '../app/src')
+        include: resolve(__dirname, '../app/src')
       }
     ]
   }

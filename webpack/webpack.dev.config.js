@@ -1,43 +1,72 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-//  WebPack Development Config
+//  WebPack 2 Development Config
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 //
 //  author: Jose Quinto - https://blogs.josequinto.com
 //
-//  More webpack examples: https://github.com/webpack/webpack/tree/master/examples
+//  WebPack 2 Migrating guide: https://webpack.js.org/guides/migrating/
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-let path = require('path');
-let webpack = require('webpack');
+const { resolve } = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  
+
   // Best way to learn all webpack options: https://github.com/webpack/webpack/blob/v1.13.3/lib/WebpackOptionsApply.js
-  
+
   // Use target = web to optimize the bundle for web sites
-  target: 'web',  
+  target: 'web',
 
   // Use devtool to enhance the debugging process. 
   //    More info: https://webpack.js.org/configuration/devtool/ 
   //               and https://webpack.github.io/docs/build-performance.html#sourcemaps
-  devtool: 'cheap-module-eval-source-map',    
-
-  defineDebug: true,
-  debug: true,
+  devtool: 'inline-source-map',
   entry: {
-    'app': [
-        'react-hot-loader/patch',
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server', //doesn’t reload the browser upon syntax errors, 'webpack/hot/dev-server' does!
-        './app/src/index.jsx'
+    'bundle': [
+      // activate HMR for React
+      'react-hot-loader/patch',
+      // bundle the client for webpack-dev-server
+      // and connect to the provided endpoint   
+      'webpack-dev-server/client?http://localhost:3000',
+      // bundle the client for hot reloading
+      // only- means to only hot reload for successful updates
+      'webpack/hot/only-dev-server',
+      // Our app main entry            
+      './app/src/index.jsx'
     ]
   },
   output: {
-    path: path.join(__dirname, './../dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
+    path: resolve(__dirname, './../dist'),
+    filename: '[name].js',
+    // necessary for HMR to know where to load the hot update chunks
+    publicPath: '/'
   },
+
+  devServer: {
+    // All options here: https://webpack.js.org/configuration/dev-server/
+
+    // enable HMR on the server
+    hot: true,
+    // match the output path
+    contentBase: resolve(__dirname, '../dist'),
+    // match the output `publicPath`
+    publicPath: '/',
+
+    port: 3000,
+
+    historyApiFallback: true,
+
+    // All the stats options here: https://webpack.js.org/configuration/stats/
+    stats: {
+      colors: true, // color is life
+      chunks: false, // this reduces the amount of stuff I see in my terminal; configure to your needs
+      'errors-only': true
+    }
+  },
+
+  context: resolve(__dirname, '../'),
+
   plugins: [
     // See full list: https://github.com/webpack/docs/wiki/list-of-plugins
 
@@ -45,6 +74,8 @@ module.exports = {
      * This is where the magic happens! You need this to enable Hot Module Replacement!
      */
     new webpack.HotModuleReplacementPlugin(),
+    // prints more readable module names in the browser console on HMR updates
+    new webpack.NamedModulesPlugin(),
     /**
       * When there are errors while compiling this plugin skips the emitting phase (and recording phase), 
       * so there are no assets emitted that include errors. The emitted flag in the stats is false for all assets. 
@@ -54,18 +85,36 @@ module.exports = {
     new webpack.NoErrorsPlugin()
   ],
   module: {
-    loaders: [
+    // loaders -> rules in webpack 2
+    rules: [
       {
         test: /\.jsx$/,
         loader: 'babel-loader',                                   // Use loader instead loaders to be compatible with the next version, webpack 2
-        include: path.resolve(__dirname, './../app/src')          // Use include instead exclude to improve the build performance
+        include: resolve(__dirname, './../app/src')          // Use include instead exclude to improve the build performance
       },
-      { 
+      {
         test: /\.scss$/i,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"],
-        include: path.resolve(__dirname, './../app/stylesheets')  // Use include instead exclude to improve the build performance
+        include: resolve(__dirname, './../app/stylesheets'),  // Use include instead exclude to improve the build performance
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              importLoaders: 1,
+              minimize: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       }
-        
     ]
   }
 };
