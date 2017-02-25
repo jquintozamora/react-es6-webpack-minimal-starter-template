@@ -85,10 +85,8 @@ module.exports = {
         test: /\.scss$/i,
         include: resolve(__dirname, '../app/stylesheets'),
         loader: ExtractTextPlugin.extract({
-          //fallback: 'style-loader',
-          fallbackLoader: 'style-loader',
-          //use: [
-          loader: [
+          fallback: 'style-loader',
+          use: [
             {
               loader: 'css-loader',
               options: {
