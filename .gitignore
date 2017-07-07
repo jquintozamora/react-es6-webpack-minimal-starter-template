@@ -3,6 +3,7 @@
 
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 dist/bundle.js*
+dist/main.css*
 
 # Dependency directories
 node_modules

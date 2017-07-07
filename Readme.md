@@ -1,4 +1,4 @@
-# Simple Starter Template for React, ES6, SCSS, Webpack and Live Reloading (React Hot Loader 3)
+# Simple Starter Template for React, ES6, SASS, Webpack 2 and Live Reloading (React Hot Loader 3)
 The reason for doing other React starter template for single page applications (SPA) 
 is because when I started to look into templates it took to me hours and hours of googling and testing different templates
 to have some starting point for my SPA application.   
@@ -12,9 +12,8 @@ Let's try!
 - [SCSS](http://sass-lang.com) using ITCSS and [BEM](http://getbem.com/introduction/) methodology. 
     - See this [sample](https://github.com/xfiveco/chisel-sample/tree/master/src/styles)
 - [Hot Module Replacement](https://medium.com/@dan_abramov/hot-reloading-in-react-1140438583bf#.xh6v0ht7j) ([React Hot Loader 3](https://github.com/gaearon/react-hot-loader/issues/243))
-- Webpack
+- Webpack 2
     - [Webpack-dev-server](https://webpack.js.org/how-to/develop/#webpack-dev-server)
-    - Webpack development environment configuration
     - Webpack Babel loader configuration
     - Webpack SCSS configuration
     - [Webpack configuration for HMR](https://webpack.js.org/how-to/hot-module-reload)
