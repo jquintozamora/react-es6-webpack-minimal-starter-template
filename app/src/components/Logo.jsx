@@ -17,6 +17,6 @@ Logo.propTypes = {
     src: React.PropTypes.string.isRequired
 };
 Logo.defaultProps = {
-    src: "https://external-lhr3-1.xx.fbcdn.net/safe_image.php?d=AQA5SRgxgPFpIM6K&url=https%3A%2F%2Fscontent-lhr3-1.xx.fbcdn.net%2Ft39.2365-6%2F11057038_1603675009889853_2020621244_n.png"
+    src: "https://facebook.github.io/react/img/logo.svg"
 };
 
