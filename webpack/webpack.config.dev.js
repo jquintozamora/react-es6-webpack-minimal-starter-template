@@ -33,7 +33,6 @@ module.exports = {
   entry: {
     'app': [
       'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:3000',
       'webpack/hot/only-dev-server', //doesn’t reload the browser upon syntax errors, 'webpack/hot/dev-server' does!
       './app/src/index.jsx'
     ]
