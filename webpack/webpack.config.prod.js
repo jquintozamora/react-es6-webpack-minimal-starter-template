@@ -33,7 +33,8 @@ module.exports = {
   target: 'web',
 
   entry: {
-    'app': [
+    polyfills: ['core-js/es6/set'],
+    'bundle': [
       './app/src/index.jsx'
     ]
   },
@@ -43,7 +44,7 @@ module.exports = {
     // This does not produce a real file. It's just the virtual path that is
     // served by WebpackDevServer in development. This is the JS bundle
     // containing code from all our entry points, and the Webpack runtime.
-    filename: 'static/js/bundle.js',
+    filename: 'static/js/[name].js',
     // There are also additional JS chunk files if you use code splitting.
     chunkFilename: 'static/js/[name].chunk.js',
     // This is the URL that app is served from. We use "/" in development.
